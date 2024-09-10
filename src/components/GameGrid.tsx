@@ -2,25 +2,10 @@ import React, { useEffect, useState } from "react";
 import { HStack, Image, Text } from "@chakra-ui/react";
 import apiClient from "../services/api-client";
 import { ul } from "framer-motion/client";
+import useGames from "../hooks/useGames";
 
-interface Games {
-  id: number;
-  name: string;
-}
-interface FetchGamesResponse {
-  count: number;
-  results: Games[];
-}
 const GameGrid = () => {
-  const [games, setGames] = useState<Games[]>([]);
-  const [error, setError] = useState([]);
-
-  useEffect(() => {
-    apiClient
-      .get<FetchGamesResponse>("/xgames")
-      .then((res) => setGames(res.data.results))
-      .catch((err) => setError(err.message));
-  }, []);
+  const { error, games } = useGames();
   return (
     <>
       {error && <Text>{error}</Text>}
