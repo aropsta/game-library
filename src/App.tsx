@@ -20,6 +20,7 @@ export interface GameQuery {
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
+  //Checking if any of the filters in our gameQuery object are NOT undefined: results are being filtered
   const isFiltered = !Object.values(gameQuery).every(
     (value) => value === undefined,
   );
