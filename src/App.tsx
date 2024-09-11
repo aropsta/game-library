@@ -1,15 +1,5 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Flex,
-  Grid,
-  GridItem,
-  HStack,
-  Show,
-} from "@chakra-ui/react";
+import { useState } from "react";
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";

@@ -1,6 +1,5 @@
 import { GameQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenres";
 import { Platform } from "./usePlatforms";
 
 export interface Game {
@@ -22,5 +21,5 @@ export default function useGames(gameQuery: GameQuery) {
     },
   };
 
-  return useData<Game>("/games", requestConfig, dependencies);
+  return useData<Game>("/games", requestConfig, dependencies as []);
 }
