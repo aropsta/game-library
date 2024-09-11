@@ -7,13 +7,18 @@ Here RAWG API was used. RAWG is a service which boasts 'The biggest video game d
 ## Features
 
 - Fully responsive
-- Themed and aesthetically pleasing ()
+- Modern UI/UX design
 - Light and dark modes
 
+- Error handling
+
+  - Loading states
+  - Conditional elements based on server responses
+
 - Filtering results by
-- Genres
-- Platforms (PC, xbox etc)
-- Sorting (Name, date etc)
+  - Genres
+  - Platforms (PC, xbox etc)
+  - Sorting (Name, date etc)
 
 # Tech Stack
 
