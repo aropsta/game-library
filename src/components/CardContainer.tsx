@@ -6,7 +6,7 @@ interface Props {
 }
 const CardContainer = ({ children }: Props) => {
   return (
-    <Box width="200px" borderRadius={10} overflow="hidden">
+    <Box borderRadius={10} overflow="hidden">
       {children}
     </Box>
   );
