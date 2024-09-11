@@ -23,18 +23,17 @@ const GameGrid = ({ gameQuery }: Props) => {
         spacing={4}
         // paddingBlock={10}
       >
-        {isLoading &&
-          loadPlaceholder.map((pHolder) => (
-            <CardContainer key={pHolder}>
-              <GameCardLoader />
-            </CardContainer>
-          ))}
-
-        {games.map((game) => (
-          <CardContainer key={game.id}>
-            <GameCard game={game}></GameCard>
-          </CardContainer>
-        ))}
+        {isLoading
+          ? loadPlaceholder.map((pHolder) => (
+              <CardContainer key={pHolder}>
+                <GameCardLoader />
+              </CardContainer>
+            ))
+          : games.map((game) => (
+              <CardContainer key={game.id}>
+                <GameCard game={game}></GameCard>
+              </CardContainer>
+            ))}
       </SimpleGrid>
     </>
   );

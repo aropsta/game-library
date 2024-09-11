@@ -18,45 +18,41 @@ interface Props {
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data: genres, isLoading, error } = useGenres();
 
-  if (!error) return null;
-  //show loading spinner
-  if (isLoading)
+  function getGenreList() {
     return genres.map((genre) => (
-      <List>
-        <ListItem>
-          <Spinner marginY={4} />
-        </ListItem>
-      </List>
+      <ListItem
+        key={genre.id}
+        padding={1.5}
+        borderRadius={4}
+        fontWeight={"semiBold"}
+        backgroundColor={genre.id === selectedGenre?.id ? "gray.700" : ""}
+      >
+        <HStack>
+          <Image
+            boxSize={"32px"}
+            borderRadius={3}
+            src={getCroppedImageUrl(genre.image_background)}
+            alt=""
+          ></Image>
+          <Button
+            fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+            onClick={(e) => onSelectGenre(genre)}
+            variant="link"
+            fontSize={"lg"}
+          >
+            {genre.name}
+          </Button>
+        </HStack>
+      </ListItem>
     ));
+  }
+
+  //if theres an error in API request, display no elements
+  if (error.length > 0) return null;
 
   return (
     <List>
-      {genres.map((genre) => (
-        <ListItem
-          key={genre.id}
-          padding={1.5}
-          borderRadius={4}
-          fontWeight={"semiBold"}
-          backgroundColor={genre.id === selectedGenre?.id ? "gray.700" : ""}
-        >
-          <HStack>
-            <Image
-              boxSize={"32px"}
-              borderRadius={3}
-              src={getCroppedImageUrl(genre.image_background)}
-              alt=""
-            ></Image>
-            <Button
-              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-              onClick={(e) => onSelectGenre(genre)}
-              variant="link"
-              fontSize={"lg"}
-            >
-              {genre.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
+      {isLoading ? <Spinner size="xl" marginY={4} /> : getGenreList()}
     </List>
   );
 };

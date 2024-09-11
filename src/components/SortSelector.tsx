@@ -24,12 +24,13 @@ const SortSelector = ({ sortOrder, onSelectSortOrder }: Props) => {
     {
       //hyphen dictates sorting reverse order (earliest first):
       //https://api.rawg.io/docs/#operation/games_list
-      value: "-added",
-      label: "Date added",
-    },
-    {
       value: "name",
       label: "Name",
+    },
+    {
+      value: "-added",
+
+      label: "Date added",
     },
     {
       value: "-released",
@@ -49,7 +50,7 @@ const SortSelector = ({ sortOrder, onSelectSortOrder }: Props) => {
   );
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+      <MenuButton fontSize={14} as={Button} rightIcon={<BsChevronDown />}>
         Sort by: {currentSortOrder?.label || "Relevance"}
       </MenuButton>
       <MenuList>

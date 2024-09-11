@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import {
+  Box,
   Button,
   ButtonGroup,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -36,7 +38,7 @@ function App() {
         lg: "260px 1fr",
       }}
     >
-      <GridItem area="nav" borderBottom="1px solid" borderColor={"gray.200"}>
+      <GridItem area="nav">
         <NavBar />
       </GridItem>
       <Show above="lg">
@@ -47,21 +49,23 @@ function App() {
           />
         </GridItem>
       </Show>
-      <GridItem area="main" padding={2}>
-        <HStack spacing={3} marginBottom={6}>
-          <PlatformSelector
-            selectedPlatform={gameQuery.platform}
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-          />
+      <GridItem area="main">
+        <Flex marginBottom={6}>
+          <Box marginRight={4}>
+            <PlatformSelector
+              selectedPlatform={gameQuery.platform}
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+            />
+          </Box>
           <SortSelector
             sortOrder={gameQuery.sortOrder}
             onSelectSortOrder={(sortOrder) =>
               setGameQuery({ ...gameQuery, sortOrder })
             }
           />
-        </HStack>
+        </Flex>
 
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
