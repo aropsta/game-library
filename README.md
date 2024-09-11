@@ -1,6 +1,7 @@
 # Game Hub Library
 
 ![alt text]("./src/assets/Screenshot.png")
+![screenshot]("./src/assets/Screenshot.png")
 
 This project aims to demonstrate my abilities to communicate with APIs, to aquire, filter and be able to search through data.
 
