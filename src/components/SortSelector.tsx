@@ -11,21 +11,57 @@ import { BsChevronDown } from "react-icons/bs";
 import usePlatoforms, { Platform } from "../hooks/usePlatforms";
 
 interface Props {
-  onSelectPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  onSelectSortOrder: (sortOrder: string) => void;
+  sortOrder: string;
 }
 
-const SortSelector = () => {
+const SortSelector = ({ sortOrder, onSelectSortOrder }: Props) => {
+  const sortParams = [
+    {
+      value: "",
+      label: "Relevence",
+    },
+    {
+      //hyphen dictates sorting reverse order (earliest first):
+      //https://api.rawg.io/docs/#operation/games_list
+      value: "-added",
+      label: "Date added",
+    },
+    {
+      value: "name",
+      label: "Name",
+    },
+    {
+      value: "-released",
+      label: "Release Date",
+    },
+    {
+      value: "-metacritic",
+      label: "Popularity ",
+    },
+    {
+      value: "-rating",
+      label: "Average rating",
+    },
+  ];
+  const currentSortOrder = sortParams.find(
+    (order) => order.value === sortOrder,
+  );
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {"Order by: Relevence"}
+        Sort by: {currentSortOrder?.label || "Relevance"}
       </MenuButton>
       <MenuList>
-        <MenuItem>Item</MenuItem>
-        <MenuItem>Item</MenuItem>
-        <MenuItem>Item</MenuItem>
-        <MenuItem>Item</MenuItem>
+        {sortParams.map((order) => (
+          <MenuItem
+            onClick={() => onSelectSortOrder(order.value)}
+            key={order.value}
+            value={order.value}
+          >
+            {order.label}
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );
