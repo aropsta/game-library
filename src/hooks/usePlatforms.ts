@@ -1,11 +1,11 @@
 import useData from "./useData";
 
-interface Platform {
+export interface Platform {
   id: number;
   name: string;
   slug: string;
 }
 
-export default function usePlatofrms() {
-  return useData<Platform>("https://api.raw.io/api/platforms/lists/parents");
+export default function usePlatoforms() {
+  return useData<Platform>("/platforms/lists/parents");
 }
