@@ -37,7 +37,8 @@ export default function useData<T>(
           setLoading(false);
         });
       // react Strict mode prevents this working properly
-      // .finally(() => setLoading(false));
+      // .finally(() => setLoading(false))i;
+      //
 
       return () => controller.abort();
     },
