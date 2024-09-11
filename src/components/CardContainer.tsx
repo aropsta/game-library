@@ -5,11 +5,7 @@ interface Props {
   children: ReactNode;
 }
 const CardContainer = ({ children }: Props) => {
-  return (
-    <Box borderRadius={6} overflow="hidden">
-      {children}
-    </Box>
-  );
+  return <Box borderRadius={6}>{children}</Box>;
 };
 
 export default CardContainer;

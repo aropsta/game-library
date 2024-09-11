@@ -12,7 +12,16 @@ import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 // -----------------
 import { Platform } from "../hooks/useGames";
-import { Icon, HStack, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Icon,
+  HStack,
+  Image,
+  SimpleGrid,
+  Text,
+  Stack,
+  Wrap,
+  Tooltip,
+} from "@chakra-ui/react";
 import { IconType } from "react-icons";
 
 interface Props {
@@ -32,11 +41,15 @@ const PlatformIconList = ({ platforms }: Props) => {
     web: BsGlobe,
   };
   return (
-    <HStack marginY={1.5}>
+    <Wrap marginY={1.5}>
       {platforms.map((platform) => (
-        <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
+        <Tooltip key={platform.id} label={platform.name}>
+          <span>
+            <Icon as={iconMap[platform.slug]} color="gray.500" />
+          </span>
+        </Tooltip>
       ))}
-    </HStack>
+    </Wrap>
   );
 };
 
