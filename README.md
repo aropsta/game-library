@@ -17,4 +17,4 @@ Here RAWG API was used. RAWG is a service which boasts 'The biggest video game d
 
 # Tech Stack
 
-## (Vite) React + TypeScript + ChakraUI :
+## (Vite) React + TypeScript + ChakraUI
