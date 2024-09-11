@@ -6,13 +6,10 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-
-  useEffect(() => {
-    console.log(selectedGenre?.name);
-  }, [selectedGenre]);
   return (
     <Grid
       templateAreas={{
@@ -28,16 +25,15 @@ function App() {
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem
-          area="aside"
-          paddingX={4}
-          border="1px"
-          borderColor={"gray.200"}
-        >
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+        <GridItem area="aside" border="1px" borderColor={"gray.200"}>
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
-      <GridItem area="main" border="1px" borderColor={"gray.200"}>
+      <GridItem area="main" border="1px" borderColor={"gray.200"} padding={2}>
+        <PlatformSelector />
         <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
