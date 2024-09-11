@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
@@ -7,8 +7,8 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-export default function useData<T>() {
-  const [games, setGames] = useState<T[]>([]);
+export default function useData<T>(endpoint: string) {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -17,14 +17,14 @@ export default function useData<T>() {
 
     setLoading(true);
     apiClient
-      .get<FetchResponse<T>>("/games", { signal: controller.signal })
-      .then((res) => {
-        setGames(res.data.results);
+      .get<FetchResponse<T>>(endpoint, { signal: controller.signal })
+      .then((response) => {
+        setData(response.data.results);
         setLoading(false);
       })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
+      .catch((error) => {
+        if (error instanceof CanceledError) return;
+        setError(error.message);
         setLoading(false);
       });
     // react Strict mode prevents this working properly
@@ -32,5 +32,5 @@ export default function useData<T>() {
 
     return () => controller.abort();
   }, []);
-  return { games, error, isLoading };
+  return { data, error, isLoading };
 }
