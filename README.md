@@ -2,14 +2,14 @@
 
 ![screenshot](src/assets/Screenshot.png)
 
-This project aims to demonstrate my abilities to communicate with APIs, to aquire, filter and be able to search through data.
+This project demonstrates my abillity to effectively communicate with APIs.
 
-Here RAWG API was used. RAWG is a service which boasts 'The biggest video game database' .
+The free API for RAWG, a service which boasts 'The biggest video game database' was used
 
 ## Features
 
 - Fully responsive
-- Modern UI/UX design
+- Modern UI design
 - Light and dark modes
 
 - Error handling
@@ -18,10 +18,13 @@ Here RAWG API was used. RAWG is a service which boasts 'The biggest video game d
   - Conditional elements based on server responses
 
 - Filtering results by
+
   - Genres
   - Platforms (PC, xbox etc)
   - Sorting (Name, date etc)
 
+- Data caching for different types of data
+
 # Tech Stack
 
-## (Vite) React + TypeScript + ChakraUI
+## (Vite) React + TypeScript + ChakraUI + ReactQuery + Axios

@@ -15,7 +15,7 @@ export default function usePlatoforms() {
   return useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: () =>
-      apiClient.get<FetchResponse<Genre>>(endpoint).then((res) => res.data),
+      apiClient.get<FetchResponse<Platform>>(endpoint).then((res) => res.data),
     staleTime: 24 * 60 * 60 * 1000, //24hrs
   });
 }

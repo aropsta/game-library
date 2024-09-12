@@ -10,13 +10,13 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { error, data: games, isLoading } = useGames(gameQuery);
+  const { data, isLoading, error } = useGames(gameQuery);
   const loadPlaceholder = [1, 2, 3, 4, 5, 6];
 
   //render certain elements based on response variables
-  if (error.length > 0) return <Text>{error}</Text>;
-  if (games.length === 0 && !isLoading)
-    return <Text fontSize="2xl">No results found</Text>;
+  if (error) return <Text>{error.message}</Text>;
+  // if (games.length === 0 && !isLoading)
+  //   return <Text fontSize="2xl">No results found</Text>;
 
   return (
     <SimpleGrid
@@ -30,7 +30,7 @@ const GameGrid = ({ gameQuery }: Props) => {
               <GameCardLoader />
             </CardContainer>
           ))
-        : games.map((game) => (
+        : data?.results.map((game) => (
             <CardContainer key={game.id}>
               <GameCard game={game}></GameCard>
             </CardContainer>

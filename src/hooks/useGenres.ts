@@ -1,10 +1,7 @@
-import { useQueryClient, useQuery } from "@tanstack/react-query";
-import useData, { FetchResponse } from "./useData";
+import { useQuery } from "@tanstack/react-query";
+import { FetchResponse } from "./useData";
 import {} from "@chakra-ui/react";
 import apiClient from "../services/api-client";
-import { AxiosResponse, CanceledError } from "axios";
-import { useState } from "react";
-import { GameQuery } from "../App";
 
 export interface Genre {
   id: number;
