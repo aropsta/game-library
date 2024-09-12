@@ -1,4 +1,10 @@
-import useData from "./useData";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
+import useData, { FetchResponse } from "./useData";
+import {} from "@chakra-ui/react";
+import apiClient from "../services/api-client";
+import { AxiosResponse, CanceledError } from "axios";
+import { useState } from "react";
+import { GameQuery } from "../App";
 
 export interface Genre {
   id: number;
@@ -8,5 +14,22 @@ export interface Genre {
 }
 
 export default function useGenres() {
-  return useData<Genre>("/genres");
+  // const queryClient = useQueryClient();
+
+  // const requestConfig = {
+  //   params: {
+  //     genres: gameQuery.genre?.id,
+  //     parent_platforms: gameQuery.platform?.id,
+  //     ordering: gameQuery.sortOrder,
+  //     search: gameQuery.searchText,
+  //   },
+  // };
+
+  const endpoint = "/genres";
+  return useQuery<FetchResponse<Genre>, Error>({
+    queryKey: ["genres"],
+    queryFn: () =>
+      apiClient.get<FetchResponse<Genre>>(endpoint).then((res) => res.data),
+    staleTime: 24 * 60 * 60 * 1000, //24hrs
+  });
 }

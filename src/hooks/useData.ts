@@ -3,7 +3,7 @@ import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
 
 //interface for generic response object
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
   results: T[];
 }

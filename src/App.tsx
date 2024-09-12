@@ -25,6 +25,10 @@ function App() {
     (value) => value === undefined,
   );
 
+  function clearFilters() {
+    setGameQuery({} as GameQuery);
+  }
+
   return (
     <Grid
       templateAreas={{
@@ -39,7 +43,10 @@ function App() {
       {/* Navigation Bar Area */}
       <GridItem area="nav">
         <NavBar
-          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+          gameQuery={gameQuery}
+          onSearch={(searchText) => {
+            setGameQuery({ ...gameQuery, searchText });
+          }}
         />
       </GridItem>
 
@@ -75,10 +82,7 @@ function App() {
             }
           />
           {isFiltered ? (
-            <Button
-              onClick={() => setGameQuery({} as GameQuery)}
-              variant="link"
-            >
+            <Button onClick={clearFilters} variant="link">
               Clear filters
             </Button>
           ) : null}
