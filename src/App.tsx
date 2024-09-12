@@ -19,7 +19,7 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  const [searchField, setSearchField] = useState("");
+  // const [searchField, setSearchField] = useState("");
 
   //Checking if any of the filters in our gameQuery object are NOT undefined: results are being filtered
   const isFiltered = !Object.values(gameQuery).every(
@@ -28,7 +28,7 @@ function App() {
 
   function clearFilters() {
     setGameQuery({} as GameQuery);
-    setSearchField("");
+    // setSearchField("");
   }
 
   return (
@@ -45,10 +45,10 @@ function App() {
       {/* Navigation Bar Area */}
       <GridItem area="nav">
         <NavBar
-          searchField={searchField}
-          onSearchChange={(e: React.FormEvent<HTMLInputElement>) =>
-            setSearchField(e.currentTarget.value)
-          }
+          // searchField={searchField}
+          // onSearchChange={(e: React.FormEvent<HTMLInputElement>) =>
+          //   setSearchField(e.currentTarget.value)
+          // }
           gameQuery={gameQuery}
           onSearch={(searchText) => {
             setGameQuery({ ...gameQuery, searchText });
@@ -87,13 +87,13 @@ function App() {
               setGameQuery({ ...gameQuery, sortOrder })
             }
           />
+          {/* Clear Filters */}
           {isFiltered ? (
             <Button onClick={clearFilters} variant="link">
               Clear filters
             </Button>
           ) : null}
         </Flex>
-        {/* Clear Filters */}
 
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
