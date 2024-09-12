@@ -10,7 +10,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
-import getCroppedImageUrl from "../services/image-url";
+import getCroppedImageUrl from "../services/utils";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;

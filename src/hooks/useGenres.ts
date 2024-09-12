@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { FetchResponse } from "./useData";
-import {} from "@chakra-ui/react";
-import apiClient from "../services/api-client";
+import { FetchResponse } from "../services/APIClient";
+import APIClient from "../services/APIClient";
 
+const apiClient = new APIClient<Genre>("/genres");
 export interface Genre {
   id: number;
   name: string;
@@ -22,11 +22,9 @@ export default function useGenres() {
   //   },
   // };
 
-  const endpoint = "/genres";
   return useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
-    queryFn: () =>
-      apiClient.get<FetchResponse<Genre>>(endpoint).then((res) => res.data),
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24hrs
   });
 }

@@ -1,8 +1,6 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { Dispatch, SetStateAction, useRef } from "react";
+import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
-import { GameQuery } from "../App";
-
 interface Props {
   onSearch: (searchText: string) => void;
   searchField: string;
@@ -21,10 +19,6 @@ const SearchInput = ({ onSearch, onSearchChange, searchField }: Props) => {
       <InputGroup>
         <InputLeftElement children={<BsSearch />} />
         <Input
-          // onChange={(e) => {
-          //   if (inputRef.current) onSearch(inputRef.current.value);
-          //   e.preventDefault();
-          // }}
           ref={inputRef}
           borderRadius={20}
           placeholder="Search Games..."
