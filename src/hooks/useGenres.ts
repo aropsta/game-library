@@ -25,6 +25,7 @@ export default function useGenres() {
   //   },
   // };
 
+  //Return the object from react query
   return useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,

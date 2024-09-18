@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 //Interface to type the response received from api backed. It's generic so we can fetch any type of data
+//For more details, refer to: https://api.rawg.io/docs/#tag/games
 export interface FetchResponse<T> {
   count: number;
   results: T[];
@@ -16,7 +17,7 @@ const axiosInstance = axios.create({
 });
 
 export default class APIClient<T> {
-  //Accepting an endpoint param when object first gets created to set the url for the get method
+  //Accepting an endpoint param when object first gets created to set the url for the getAll method
   endpoint: string;
   constructor(endpoint: string) {
     this.endpoint = endpoint;

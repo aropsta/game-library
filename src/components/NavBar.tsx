@@ -7,10 +7,8 @@ import logo from "../../public/logo.png";
 interface Props {
   onSearch: (searchText: string) => void;
   gameQuery: GameQuery;
-  // searchField: string;
-  // onSearchChange: (e: React.FormEvent<HTMLInputElement>) => void;
 }
-const NavBar = ({ onSearch /* onSearchChange, searchField  */ }: Props) => {
+const NavBar = ({ onSearch }: Props) => {
   return (
     <HStack paddingBottom={4}>
       <Link href="/">
@@ -22,11 +20,7 @@ const NavBar = ({ onSearch /* onSearchChange, searchField  */ }: Props) => {
           fit="cover"
         />
       </Link>
-      <SearchInput
-        // searchField={searchField}
-        // onSearchChange={onSearchChange}
-        onSearch={onSearch}
-      />
+      <SearchInput onSearch={onSearch} />
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );

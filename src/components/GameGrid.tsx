@@ -1,10 +1,11 @@
-import { Button, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Button, Flex, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardLoader from "./GameCardLoader";
 import CardContainer from "./CardContainer";
 import { GameQuery } from "../App";
 import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface Props {
   gameQuery: GameQuery;
@@ -21,13 +22,30 @@ const GameGrid = ({ gameQuery }: Props) => {
   } = useGames(gameQuery);
   const loadPlaceholder = [1, 2, 3, 4, 5, 6];
 
-  //render certain elements based on response variables
+  //Caculating total number of games fetched so far
+  //data.pages contains an array of pages, each of which is an araray of our Game objects
+  const fetchedGamesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 1;
+
+  //Conditionally render these elements based on our data's state
   if (error) return <Text>{error.message}</Text>;
-  // if (games.length === 0 && !isLoading)
-  //   return <Text fontSize="2xl">No results found</Text>;
+  if (fetchedGamesCount === 0 && !isLoading)
+    return <Text fontSize="2xl">No results found</Text>;
 
   return (
-    <>
+    //infinite scroll component from react-infinite-scroll-component
+    <InfiniteScroll
+      dataLength={fetchedGamesCount}
+      next={fetchNextPage}
+      //!! converts and undefined boolean into a false
+      hasMore={!!hasNextPage}
+      loader={<Spinner size="xl" />}
+      endMessage={
+        <Text style={{ textAlign: "center" }}>
+          <b>End of the line!</b>
+        </Text>
+      }
+    >
       <SimpleGrid
         marginBottom={4}
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
@@ -50,18 +68,16 @@ const GameGrid = ({ gameQuery }: Props) => {
               </React.Fragment>
             ))}
       </SimpleGrid>
-      <Flex>
-        {
-          <Button
-            isDisabled={!hasNextPage}
-            onClick={() => fetchNextPage()}
-            justifyContent="flex-start"
-          >
-            {isFetchingNextPage ? "Loading..." : "Load more"}
-          </Button>
-        }
-      </Flex>
-    </>
+    </InfiniteScroll>
+    // {
+    //   <Button
+    //     isDisabled={!hasNextPage}
+    //     onClick={() => fetchNextPage()}
+    //     justifyContent="flex-start"
+    //   >
+    //     {isFetchingNextPage ? "Loading..." : "Load more"}
+    //   </Button>
+    // }
   );
 };
 
