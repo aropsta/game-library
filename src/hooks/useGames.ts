@@ -37,6 +37,7 @@ export default function useGames(gameQuery: GameQuery) {
     getNextPageParam: (lastPage, pages) =>
       //pages contains data of each page of data retrieved
       lastPage.next ? pages.length + 1 : undefined,
+    staleTime: 5 * 1000, //Data considered old after 5mins
   });
 }
 
