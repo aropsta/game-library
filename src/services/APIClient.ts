@@ -1,25 +1,28 @@
 import axios, { AxiosRequestConfig } from "axios";
 
+//Interface to type the response received from api backed. It's generic so we can fetch any type of data
 export interface FetchResponse<T> {
   count: number;
   results: T[];
   next: string | null;
 }
 
+//Our axiosInstance that is used to make api calls
 const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {
-    //TODO: unsecure API key. Must implement backend to secure it. Building a backend is outside the scope of this project
-    key: "5f11b8dc82e7421bb04999651d7f4c73",
+    key: import.meta.env.VITE_RAWG_API,
   },
 });
 
 export default class APIClient<T> {
+  //Accepting an endpoint param when object first gets created to set the url for the get method
   endpoint: string;
   constructor(endpoint: string) {
     this.endpoint = endpoint;
   }
 
+  //Finally we can retrieve our data from a backend
   getAll = async (config: AxiosRequestConfig) => {
     const res = await axiosInstance.get<FetchResponse<T>>(
       this.endpoint,

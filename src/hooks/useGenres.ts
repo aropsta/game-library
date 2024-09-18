@@ -2,7 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { FetchResponse } from "../services/APIClient";
 import APIClient from "../services/APIClient";
 
+//Using our api class to instantiate an axios instance.
 const apiClient = new APIClient<Genre>("/genres");
+
+//Interface for the data we will recieve from the /genres endpoint
 export interface Genre {
   id: number;
   name: string;

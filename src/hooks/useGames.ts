@@ -8,6 +8,7 @@ import { GameQuery } from "../App";
 import { FetchResponse } from "../services/APIClient";
 import { Platform } from "./usePlatforms";
 
+//Creating a new axios api client whose endpoint in the api is /games
 const apiClient = new APIClient<Game>("/games");
 
 export interface Game {
