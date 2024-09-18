@@ -13,6 +13,7 @@ export interface Genre {
   slug: string;
 }
 
+//Return the object from react query to be able to manage our data
 export default function useGenres() {
   // const queryClient = useQueryClient();
 
@@ -25,7 +26,6 @@ export default function useGenres() {
   //   },
   // };
 
-  //Return the object from react query
   return useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,

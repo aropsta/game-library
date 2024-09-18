@@ -12,7 +12,7 @@ export interface Platform {
   slug: string;
 }
 
-// Custom hook uses react Query to return the data
+// Custom hook uses react Query to manage our returned data
 export default function usePlatforms() {
   return useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
