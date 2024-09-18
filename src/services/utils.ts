@@ -1,4 +1,4 @@
-import noImage from "/dist/assets/no-image-placeholder-6f3882e0.webp";
+import noImage from "/dist/assets/no-image.webp";
 
 export default function getCroppedImageUrl(url: string) {
   if (!url) return noImage;
