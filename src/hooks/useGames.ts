@@ -22,8 +22,8 @@ export default function useGames(gameQuery: GameQuery) {
   //Takes in a page argument so the react Query function can set from which page we are getting the data
   const requestConfig = (p: number) => ({
     params: {
-      genres: gameQuery.genre?.id,
-      parent_platforms: gameQuery.platform?.id,
+      genres: gameQuery.genreId,
+      parent_platforms: gameQuery.platformId,
       ordering: gameQuery.sortOrder,
       search: gameQuery.searchText,
       page: p,

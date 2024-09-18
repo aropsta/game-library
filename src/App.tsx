@@ -4,15 +4,14 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
-import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import FilteredTitle from "./components/FilteredTitle";
 
 export interface GameQuery {
-  platform: Platform | null;
-  genre: Genre | null;
+  platformId?: number;
+  genreId?: number;
   sortOrder: string;
   searchText: string;
 }
@@ -54,14 +53,16 @@ function App() {
       <Show above="lg">
         <GridItem marginRight={3} area="aside">
           <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenreId={gameQuery.genreId}
+            onSelectGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           />
         </GridItem>
       </Show>
 
       {/* Main Grid */}
-      <GridItem area="main" className="gamegrid">
+      <GridItem area="main">
         {/* TITLE */}
         <Flex>
           <FilteredTitle gameQuery={gameQuery} />
@@ -70,9 +71,9 @@ function App() {
         {/* Filters  */}
         <Flex gap={4} marginBottom={6}>
           <PlatformSelector
-            selectedPlatform={gameQuery.platform}
+            selectedPlatformId={gameQuery.platformId}
             onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
+              setGameQuery({ ...gameQuery, platformId: platform.id })
             }
           />
           <SortSelector
