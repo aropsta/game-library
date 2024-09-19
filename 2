@@ -11,6 +11,7 @@ import useGames from "./hooks/useGames";
 
 function App() {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
+  const { isLoading } = useGames();
   //If any of the filters in our gameQuery object are NOT undefined, then we have a filter for results
   //TODO: Re implement our clear filters functionality
   const isFiltered = !Object.values(gameQuery).every(
@@ -36,9 +37,7 @@ function App() {
       }}
     >
       {/* Navigation Bar Area */}
-      <GridItem area="nav">
-        <NavBar />
-      </GridItem>
+      <GridItem area="nav">{isLoading && <NavBar />}</GridItem>
 
       {/* Aside */}
       <Show above="lg">
