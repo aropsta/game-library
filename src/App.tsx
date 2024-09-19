@@ -7,12 +7,11 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import FilteredTitle from "./components/FilteredTitle";
 import useGameQueryStore from "./store";
-import useGames from "./hooks/useGames";
 
 function App() {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
   //If any of the filters in our gameQuery object are NOT undefined, then we have a filter for results
-  //TODO: Re implement our clear filters functionality
   const isFiltered = !Object.values(gameQuery).every(
     (value) => value === undefined,
   );
@@ -20,7 +19,6 @@ function App() {
   const reset = useGameQueryStore((s) => s.clearFitlers);
 
   function clearFilters() {
-    // setGameQuery({} as GameQuery);
     reset();
   }
 
@@ -58,8 +56,8 @@ function App() {
         <Flex gap={4} marginBottom={6}>
           <PlatformSelector />
           <SortSelector />
+
           {/* Clear Filters */}
-          {/* TODO: Reimplement clear filters functionality */}
           {isFiltered && (
             <Button onClick={clearFilters} variant="link">
               Clear filters

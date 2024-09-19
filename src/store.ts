@@ -53,7 +53,7 @@ const useGameQueryStore = create<GameQueryStore>((set) => ({
       inputValue: value,
     })),
   clearFitlers: () =>
-    set((state) => ({
+    set(() => ({
       gameQuery: {
         // ...state.gameQuery,
         // platformId: undefined,
