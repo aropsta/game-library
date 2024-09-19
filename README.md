@@ -1,6 +1,6 @@
 # Game Hub Library
 
-![screenshot](src/assets/Screenshot.png)
+![screenshot](public/Screenshot.png)
 
 # This project demonstrates my abillity to effectively communicate with APIs.
 
