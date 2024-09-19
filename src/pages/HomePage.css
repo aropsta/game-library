@@ -13,3 +13,8 @@
 .infinite-scroll-component::-webkit-scrollbar() {
   display: none; /* WebKit */
 }
+
+.grid {
+  overflow: visible;
+  min-height: 100vh;
+}

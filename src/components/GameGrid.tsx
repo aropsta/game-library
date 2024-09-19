@@ -4,6 +4,7 @@ import GameCard from "./GameCard";
 import GameCardLoader from "./GameCardLoader";
 import CardContainer from "./CardContainer";
 import React from "react";
+import "../main.css";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -25,6 +26,9 @@ const GameGrid = () => {
     //infinite scroll component from react-infinite-scroll-component
     <InfiniteScroll
       dataLength={fetchedGamesCount}
+      style={{
+        overflow: "visible",
+      }}
       next={fetchNextPage}
       //!! converts and undefined boolean into a false
       hasMore={!!hasNextPage}
@@ -36,6 +40,7 @@ const GameGrid = () => {
       }
     >
       <SimpleGrid
+        overflow="show"
         marginBottom={4}
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={6}

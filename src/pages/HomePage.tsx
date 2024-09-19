@@ -59,6 +59,7 @@ const HomePage = () => {
           )}
         </Flex>
 
+        {/*Games grid*/}
         <GameGrid />
       </GridItem>
     </Grid>
