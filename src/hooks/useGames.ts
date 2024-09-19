@@ -1,8 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../services/APIClient";
-import { GameQuery } from "../App";
 import { FetchResponse } from "../services/APIClient";
 import { Platform } from "./usePlatforms";
+import useGameQueryStore from "../store";
 
 //Creating a new axios api client whose endpoint in the api is /games
 const apiClient = new APIClient<Game>("/games");
@@ -17,7 +17,8 @@ export interface Game {
 }
 
 //Custom hook which returns the query object from react query with various properties apart from our data, for managing our query
-export default function useGames(gameQuery: GameQuery) {
+export default function useGames() {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
   //Fucntion that returns an object for our query params.
   //Takes in a page argument so the react Query function can set from which page we are getting the data
   const requestConfig = (p: number) => ({

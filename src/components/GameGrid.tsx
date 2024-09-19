@@ -1,25 +1,13 @@
-import { Button, Flex, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardLoader from "./GameCardLoader";
 import CardContainer from "./CardContainer";
-import { GameQuery } from "../App";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-interface Props {
-  gameQuery: GameQuery;
-}
-
-const GameGrid = ({ gameQuery }: Props) => {
-  const {
-    data,
-    isLoading,
-    error,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useGames(gameQuery);
+const GameGrid = () => {
+  const { data, isLoading, error, fetchNextPage, hasNextPage } = useGames();
   const loadPlaceholder = [1, 2, 3, 4, 5, 6];
 
   //Caculating total number of games fetched so far

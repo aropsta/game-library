@@ -1,14 +1,9 @@
 import { HStack, Image, Link } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
-import { GameQuery } from "../App";
 import logo from "../../public/logo.png";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-  gameQuery: GameQuery;
-}
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
   return (
     <HStack paddingBottom={4}>
       <Link href="/">
@@ -20,7 +15,7 @@ const NavBar = ({ onSearch }: Props) => {
           fit="cover"
         />
       </Link>
-      <SearchInput onSearch={onSearch} />
+      <SearchInput />
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );
