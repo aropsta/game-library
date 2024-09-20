@@ -4,9 +4,9 @@
 
 # This project demonstrates my abillity to effectively communicate with APIs.
 
-This project aims to demonstrate my abilitiy to communicate with APIs, to aquire, filter and be able to search through data. And handle error and load states effectively
+In this project RAWG API, a service which boasts 'The biggest video game database' was used to demonstrate an ability pull, display and manage data from a backend.
 
-Here RAWG API was used. RAWG is a service which boasts 'The biggest video game database' .
+Axios API and React Query library were used to communicate with RAWG. Various functionality was implemented like sorting, filtering, searching and more
 
 ## Features
 
@@ -16,7 +16,7 @@ Here RAWG API was used. RAWG is a service which boasts 'The biggest video game d
 
 - Error handling
 
-  - Loading states
+  - Loading states/skeletons when pulling data
   - Conditional rendering based on server responses
 
 - Filtering results by
@@ -26,10 +26,10 @@ Here RAWG API was used. RAWG is a service which boasts 'The biggest video game d
   - Sorting (Name, date etc)
   - Search functionality
 
-- Data caching for different types of data
+- Data caching using react query
 
 # Tech Stack
 
-- React + TypeScript
+- React, React router, TypeScript
 - ChakraUI
 - Axios + React Query

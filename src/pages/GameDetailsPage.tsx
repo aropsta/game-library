@@ -8,12 +8,14 @@ import {
   Box,
   Flex,
   SimpleGrid,
+  GridItem,
 } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText";
 import DefinitionItem from "../components/DefinitionItem";
 import CriticScore from "../components/CriticScore";
 import { Game } from "../hooks/useGames";
 import GameVideo from "../components/GameVideo";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailsPage = () => {
   const { slug } = useParams();
@@ -23,12 +25,23 @@ const GameDetailsPage = () => {
   if (error || !game) throw error;
 
   return (
-    <Flex direction="column" alignItems="start" gap={4}>
-      <Heading>{game.name}</Heading>
-      <ExpandableText>{game.description_raw}</ExpandableText>
-      <GameVideo slug={game.slug} gameId={game.id} />
-      <GameAttributes game={game} />
-    </Flex>
+    <SimpleGrid
+      columns={{
+        base: 1,
+        md: 2,
+      }}
+      spacing={4}
+    >
+      <Flex marginY={4} direction="column" gap={4} alignItems="start">
+        <Heading>{game.name}</Heading>
+        <ExpandableText>{game.description_raw}</ExpandableText>
+        <GameAttributes game={game} />
+      </Flex>
+      <GridItem>
+        <GameVideo slug={game.slug} gameId={game.id} />
+        <GameScreenshots gameId={game.id} />
+      </GridItem>
+    </SimpleGrid>
   );
 };
 
