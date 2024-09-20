@@ -1,8 +1,8 @@
 import noImage from "/no-image.webp";
 
-//Data/speed saving measure
 //Takes image url and returns the url for the cropped version
 //RAWG only supports specific crop sizes
+//Data and speed optimization
 export default function getCroppedImageUrl(url: string) {
   if (!url) return noImage;
   const target = "media/";

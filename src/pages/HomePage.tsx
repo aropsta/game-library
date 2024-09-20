@@ -8,6 +8,7 @@ import FilteredTitle from "../components/FilteredTitle";
 import "./HomePage.css";
 
 const HomePage = () => {
+  //Initializing our game query state using Zustand
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
 
   //If any of the filters in our gameQuery object are NOT undefined, then we have a filter for results
@@ -15,8 +16,10 @@ const HomePage = () => {
     (value) => value === undefined,
   );
 
+  //Reset function from our zustand store to reset its inner state
   const reset = useGameQueryStore((s) => s.clearFitlers);
 
+  //Clearing all search, filter and sorting params. Triggered with onClick event
   function clearFilters() {
     reset();
   }

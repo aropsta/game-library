@@ -1,11 +1,9 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import useGame from "../hooks/useGame";
 import {
   Text,
   Heading,
   Spinner,
-  Box,
   Flex,
   SimpleGrid,
   GridItem,
@@ -18,10 +16,13 @@ import GameVideo from "../components/GameVideo";
 import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailsPage = () => {
+  //getting the slug using react router
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
 
   if (isLoading) return <Spinner />;
+
+  //throwing an error to get react router to show our error page
   if (error || !game) throw error;
 
   return (
@@ -38,7 +39,7 @@ const GameDetailsPage = () => {
         <GameAttributes game={game} />
       </Flex>
       <GridItem>
-        <GameVideo slug={game.slug} gameId={game.id} />
+        <GameVideo gameId={game.id} />
         <GameScreenshots gameId={game.id} />
       </GridItem>
     </SimpleGrid>

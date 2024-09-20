@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 interface Props {
   game: Game;
 }
+
+//Card componenet from Chakra UI for each game
 const GameCard = ({ game }: Props) => {
   return (
     <Card>

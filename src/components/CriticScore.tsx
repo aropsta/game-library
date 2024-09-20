@@ -3,6 +3,8 @@ import { Badge } from "@chakra-ui/react";
 interface Props {
   score: number;
 }
+
+//Metacritic score badge componenet
 const CriticScore = ({ score }: Props) => {
   const color = score > 75 ? "green" : score > 60 ? "yellow" : "";
   return (

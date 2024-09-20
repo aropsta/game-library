@@ -5,14 +5,17 @@ interface Props {
   children: string;
 }
 
+//Expandable text componenet
 const ExpandableText = ({ children }: Props) => {
   const [expanded, setExpanded] = useState(false);
+  //Character limit to trigger expanding functionality of text
   const limit = 300;
 
   if (!children) return null;
   if (children.length <= limit) return <Text>{children}</Text>;
 
   const summary = expanded ? children : children.substring(0, limit) + "...";
+
   return (
     <Text align="start">
       {summary}

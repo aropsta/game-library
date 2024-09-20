@@ -3,6 +3,7 @@ import useGenre from "../hooks/useGenre";
 import usePlatform from "../hooks/usePlatform";
 import useGameQueryStore from "../store";
 
+//Displays title of the current title based on what genre and platform filter are applied
 const FilterdHeading = () => {
   //old implementation when genre was stored in game query object
   // const title = `${gameQuery.platform?.name || ""} ${gameQuery.genre?.name || ""} Games`;

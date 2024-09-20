@@ -19,6 +19,7 @@ interface Props {
   platforms: Platform[];
 }
 
+//Component for list of icons within game card component
 const PlatformIconList = ({ platforms }: Props) => {
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,

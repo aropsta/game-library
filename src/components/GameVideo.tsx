@@ -1,13 +1,12 @@
-import React from "react";
 import useVideos from "../hooks/useVideos";
 
 interface Props {
   gameId: number;
-  slug: string;
 }
 
-const GameVideo = ({ gameId, slug }: Props) => {
-  const { error, isLoading, data } = useVideos(slug);
+//Component to display video for game details
+const GameVideo = ({ gameId }: Props) => {
+  const { error, isLoading, data } = useVideos(gameId);
   const first = data?.results[0];
   if (isLoading) return null;
   if (error) throw error;

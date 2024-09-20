@@ -1,9 +1,11 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
 }
+
+//Container to hold Card for each game. Card from chakra UI
 const CardContainer = ({ children }: Props) => {
   return (
     <Box

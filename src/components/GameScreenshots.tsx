@@ -4,6 +4,8 @@ import useScreenshots from "../hooks/useScreenshots";
 interface Props {
   gameId: number;
 }
+
+//Component to display screenshots using Chakra UI Image componenet
 const GameScreenshots = ({ gameId }: Props) => {
   const { data, isLoading, error } = useScreenshots(gameId);
   if (isLoading) return null;

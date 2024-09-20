@@ -4,6 +4,7 @@ import usePlatforms from "../hooks/usePlatforms";
 import usePlatform from "../hooks/usePlatform";
 import useGameQueryStore from "../store";
 
+//Component to filter games by platforms
 const PlatformSelector = () => {
   const { data, error } = usePlatforms();
 

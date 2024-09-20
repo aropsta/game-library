@@ -15,17 +15,6 @@ export interface Genre {
 
 //Return the object from react query to be able to manage our data
 export default function useGenres() {
-  // const queryClient = useQueryClient();
-
-  // const requestConfig = {
-  //   params: {
-  //     genres: gameQuery.genre?.id,
-  //     parent_platforms: gameQuery.platform?.id,
-  //     ordering: gameQuery.sortOrder,
-  //     search: gameQuery.searchText,
-  //   },
-  // };
-
   return useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,

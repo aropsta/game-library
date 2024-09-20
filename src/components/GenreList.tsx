@@ -13,6 +13,7 @@ import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/utils";
 import useGameQueryStore from "../store";
 
+//An aside that holds a list of our genres
 const GenreList = () => {
   const { data, isLoading, error } = useGenres();
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);

@@ -8,8 +8,12 @@ import "../main.css";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 
+//Grid of all our game data
 const GameGrid = () => {
+  //getting our data from custom hook that uses react query
   const { data, isLoading, error, fetchNextPage, hasNextPage } = useGames();
+
+  //Array used to map placeholders to render while data is loading
   const loadPlaceholder = [1, 2, 3, 4, 5, 6];
 
   //Caculating total number of games fetched so far
@@ -44,7 +48,6 @@ const GameGrid = () => {
         marginBottom={4}
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={6}
-        // paddingBlock={10}
       >
         {isLoading
           ? loadPlaceholder.map((pHolder) => (
@@ -63,6 +66,7 @@ const GameGrid = () => {
             ))}
       </SimpleGrid>
     </InfiniteScroll>
+    // Old way to load more data using a button instead of infinite query componenet
     // {
     //   <Button
     //     isDisabled={!hasNextPage}
