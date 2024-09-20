@@ -32,6 +32,7 @@ export default class APIClient<T> {
     return res.data;
   };
 
+  //function for getting a single piece of data
   get = async (id: number | string) => {
     return axiosInstance
       .get<T>(this.endpoint + "/" + id)

@@ -3,15 +3,23 @@ import APIClient from "../services/APIClient";
 import { FetchResponse } from "../services/APIClient";
 import { Platform } from "./usePlatforms";
 import useGameQueryStore from "../store";
+import { Genre } from "./useGenres";
 
 //Creating a new axios api client whose endpoint in the api is /games
 const apiClient = new APIClient<Game>("/games");
+
+interface Publisher {
+  id: number;
+  name: string;
+}
 
 //Interfeace for the fields we want from the data that is returned from API
 export interface Game {
   id: number;
   name: string;
+  genres: Genre[];
   slug: string;
+  publishers: Publisher[];
   description_raw: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];

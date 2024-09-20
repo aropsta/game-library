@@ -10,3 +10,10 @@ form {
 .gamegrid::-webkit-scrollbar {
   display: none; /* WebKit */
 }
+
+dd {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
