@@ -13,6 +13,7 @@ import ExpandableText from "../components/ExpandableText";
 import DefinitionItem from "../components/DefinitionItem";
 import CriticScore from "../components/CriticScore";
 import { Game } from "../hooks/useGames";
+import GameVideo from "../components/GameVideo";
 
 const GameDetailsPage = () => {
   const { slug } = useParams();
@@ -25,6 +26,7 @@ const GameDetailsPage = () => {
     <Flex direction="column" alignItems="start" gap={4}>
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
+      <GameVideo slug={game.slug} gameId={game.id} />
       <GameAttributes game={game} />
     </Flex>
   );
