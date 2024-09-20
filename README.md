@@ -33,3 +33,4 @@ Axios API and React Query library were used to communicate with RAWG. Various fu
 - React, React router, TypeScript
 - ChakraUI
 - Axios + React Query
+- Global state management using Zustand
