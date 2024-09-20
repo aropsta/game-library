@@ -4,7 +4,7 @@
 
 ![screenshot](public/Screenshot2.png)
 
-# This project demonstrates my abillity to effectively communicate with APIs.
+# A project to demonstrates my abillity to effectively communicate with APIs.
 
 In this project RAWG API, a service which boasts 'The biggest video game database' was used to demonstrate an ability pull, display and manage data from a backend.
 
